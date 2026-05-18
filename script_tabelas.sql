@@ -10,44 +10,10 @@ O Agente X foi indicado para uma nova missão, seu alvo fica no XXX, localizado 
 create database selects;
 use selects;
 
-create table link_especialidades_agentes (
-id_agentes int,
-id_especialides int,
-primary key (id_agentes, id_especialides),
-constraint id_agentes_link_especialidades_agentes foreign key (id_agentes) references agentes(id),
-constraint id_especialidades_link_especialidades_agentes foreign key (id_especialides) references especialidades(id)
-);
-
-create table link_equipamentos_agentes (
-id_agentes int,
-id_equipamentos int,
-primary key (id_agentes, id_equipamentos),
-constraint id_agentes_link_equipamentos_agentes foreign key (id_agentes) references agentes(id),
-constraint id_especialidades_link_equipamentos_agentes foreign key (id_especialides) references especialidades(id)
-);
-
-create table link_recursos_agentes (
-id_agentes int,
-id_recursos int,
-primary key (id_agentes, id_recursos),
-constraint id_agentes_link_recursos_agentes foreign key (id_agentes) references agentes(id),
-constraint id_recursos_link_recursos_agentes foreign key (id_recursos) references recursos(id)
-);
-
-create table link_missao_agentes (
-id_agentes int,
-id_missao int,
-primary key (id_agentes, id_missao),
-constraint id_agentes_link_missao_agentes foreign key (id_agentes) references agentes(id),
-constraint id_missao_link_missao_agentes foreign key (id_missao) references missao(id)
-);
-
-create table link_missao_localizacao (
-id_missao int,
-id_localizacao int,
-primary key (id_missao, id_localizacao),
-constraint id_missao_link_missao_localizacao foreign key (id_missao) references missao(id),
-constraint id_localizacao_link_missao_localizacao foreign key (id_localizacao) references localizacao(id)
+create table agentes(
+id int primary key auto_increment,
+nome varchar(100),
+serie varchar(20)
 );
 
 create table especialidades(
@@ -55,12 +21,6 @@ id int primary key auto_increment,
 especialidade varchar(50),
 grau int,
 constraint chkGrau check (grau in(1, 10))
-);
-
-create table agentes(
-id int primary key auto_increment,
-nome varchar(100),
-serie varchar(20)
 );
 
 create table equipamentos(
@@ -100,4 +60,44 @@ id int primary key auto_increment,
 nome varchar(50),
 utilidade varchar(50),
 quantidade decimal(10, 2)
+);
+
+create table link_especialidades_agentes (
+id_agentes int,
+id_especialides int,
+primary key (id_agentes, id_especialides),
+constraint id_agentes_link_especialidades_agentes foreign key (id_agentes) references agentes(id),
+constraint id_especialidades_link_especialidades_agentes foreign key (id_especialides) references especialidades(id)
+);
+
+create table link_equipamentos_agentes (
+id_agentes int,
+id_equipamentos int,
+primary key (id_agentes, id_equipamentos),
+constraint id_agentes_link_equipamentos_agentes foreign key (id_agentes) references agentes(id),
+constraint id_especialidades_link_equipamentos_agentes foreign key (id_equipamentos) references equipamentos(id)
+);
+
+create table link_recursos_agentes (
+id_agentes int,
+id_recursos int,
+primary key (id_agentes, id_recursos),
+constraint id_agentes_link_recursos_agentes foreign key (id_agentes) references agentes(id),
+constraint id_recursos_link_recursos_agentes foreign key (id_recursos) references recurso(id)
+);
+
+create table link_missao_agentes (
+id_agentes int,
+id_missao int,
+primary key (id_agentes, id_missao),
+constraint id_agentes_link_missao_agentes foreign key (id_agentes) references agentes(id),
+constraint id_missao_link_missao_agentes foreign key (id_missao) references missao(id)
+);
+
+create table link_missao_localizacao (
+id_missao int,
+id_localizacao int,
+primary key (id_missao, id_localizacao),
+constraint id_missao_link_missao_localizacao foreign key (id_missao) references missao(id),
+constraint id_localizacao_link_missao_localizacao foreign key (id_localizacao) references localizacao(id)
 );
