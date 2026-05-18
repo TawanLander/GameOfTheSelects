@@ -31,18 +31,21 @@ funcionalidade varchar(100),
 quantidade int
 );
 
-create table alvos(
+create table envolvidos(
 id int primary key auto_increment,
+missao_id INT,
 nome varchar(50),
 cargo varchar(50),
-aka varchar(50)
+aka varchar(50),
+descricao varchar(200),
+alvo tinyint
 );
 
 create table missao(
 id int primary key auto_increment,
 nome varchar(50),
 objetivo varchar(100),
-dtIncio datetime,
+dtInicio datetime,
 dtFim datetime
 );
 
@@ -101,3 +104,4 @@ primary key (id_missao, id_localizacao),
 constraint id_missao_link_missao_localizacao foreign key (id_missao) references missao(id),
 constraint id_localizacao_link_missao_localizacao foreign key (id_localizacao) references localizacao(id)
 );
+
