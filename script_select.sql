@@ -50,7 +50,7 @@ select nome as 'Nome', descricao as 'Descrição' from envolvidos where alvo = 0
 
 /* Traga o nome, a data e o objetivo de uma a missão que acabe em '12 de janeiro de 2019 as 22:24 aos 16 segundos' data e com o objetivo 'Invadir a casa branca' 
 trate os todas as colunas com a primeira letra maiúscula*/
-select nome as 'Nome', dtIncio as 'Data de Início', objetivo as 'Objetivo' from missao where dtFim = '2019-01-12 22:24:16' and objetivo = 'Invadir a casa branca';
+select nome as 'Nome', dtInicio as 'Data de Início', objetivo as 'Objetivo' from missao where dtFim = '2019-01-12 22:24:16' and objetivo = 'Invadir a casa branca';
 
 /* Traga o nome e o objetivo das missões que comecem em '10 de abril de 2025 as 10:59' data e que o objetivo contenha 'descobrir', e que ainda não tenha data de finalização da missão */
 select nome, objetivo from missao where dtInicio = '2025-04-10 10:59:00' and objetivo like '%descobrir%' and dtFim is null;
@@ -59,7 +59,7 @@ select nome, objetivo from missao where dtInicio = '2025-04-10 10:59:00' and obj
 que sejam conhecidos como "El Macho" e que são alvos que são alvos */
 select nome as 'Nome', descricao as 'Descrição' from envolvidos where aka = 'El Macho' and alvo = 1;
 
-/* Selecione uma missão que tenha duração de apenas um dia, traga seu nome e objetivo com a coluna formatada com a primeira letra maiúscula*/
+/* Selecione uma missão que durou 0 segundos, traga seu nome e objetivo com a coluna formatada com a primeira letra maiúscula*/
 select nome as 'Nome', objetivo as 'Objetivo' from missao where dtInicio = dtFim;
 
 /* Selecione  a todas as localizações do pais 'Brasil' e da provincia 'São Paulo' traga os resultados em ordem alfabética, ordanados pelo nome */
@@ -85,7 +85,7 @@ select * from localizacao where pais like 'J%' and provincia like '%k%' and cida
 select nome, serie from agentes where serie like '%20' and nome like 'A%' order by nome asc;
 
 /* Traga o nome e a data de finalização das missoes cujo objetivo seja resgate e que tenham começado a meia noite de 01 de janeiro de 2026, ordene pela data de finalização decrescente*/
-select nome, dtFim from missão where objetivo like '%resgate%' and dtInicio = '2026-01-01 00:00:00' order by dtFim desc;
+select nome, dtFim from missao where objetivo like '%resgate%' and dtInicio = '2026-01-01 00:00:00' order by dtFim desc;
 
 /* Traga o nome, tipo e funcionalidade dos equipamento onde o tipo seja 'Suporte' e sua funcionalidade contenha criptografia, ordene por tipo em ordem crescente */
 select nome, tipo, funcionalidade from Equipamentos where tipo = 'Suporte' and funcionalidade like '%criptografia%' order by tipo asc;
